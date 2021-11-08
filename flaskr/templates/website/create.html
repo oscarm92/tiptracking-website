@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Tip Post{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="tip">Tips</label>
+    <input name="tip" id="tip" value="{{ request.form['tip'] }}" required>
+    <label for="note">Notes</label>
+    <textarea name="note" id="note">{{ request.form['note'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

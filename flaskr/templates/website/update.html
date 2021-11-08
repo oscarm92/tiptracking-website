@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit Tip{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="tip">Tip</label>
+    <input name="tip" id="tip"
+      value="{{ request.form['tip'] or post['tip'] }}" required>
+    <label for="note">Note</label>
+    <textarea name="note" id="note">{{ request.form['note'] or post['note'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+  <form action="{{ url_for('website.delete', id=post['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}
